@@ -23,15 +23,22 @@
   will-change: transform;
 }
 
-.monogram {
+.monogram-logo-wrap {
   margin: 0;
-  font-family: var(--font-hero);
-  font-weight: 800;
-  font-size: clamp(5.5rem, 24vw, 15rem);
-  line-height: 0.85;
-  letter-spacing: -0.02em;
-  color: var(--color-fg);
+  line-height: 0;
+}
+
+/* Isotipo real de la marca: PNG en negro sobre transparente, invertido a
+   blanco por filtro CSS para leerse sobre el fondo negro de la splash. */
+.monogram-logo {
+  display: block;
+  width: clamp(15rem, 46vw, 38rem);
+  max-width: 80vw;
+  height: auto;
+  object-fit: contain;
+  filter: invert(1);
   user-select: none;
+  pointer-events: none;
 }
 
 .splash__actions {
@@ -59,7 +66,7 @@
     gap: clamp(1rem, 4vh, 2rem);
   }
 
-  .monogram {
-    font-size: clamp(3.5rem, 14vh, 8rem);
+  .monogram-logo {
+    width: clamp(9rem, 34vh, 20rem);
   }
 }
