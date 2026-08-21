@@ -41,6 +41,25 @@
   pointer-events: none;
 }
 
+/* Detalle discreto de marca bajo el logo: pequeño, en el acento de color
+   único permitido (amarillo neón), sin competir con el logo ni los botones. */
+.splash__brandmark {
+  margin: 0;
+  font-family: var(--font-btn);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  user-select: none;
+}
+
+.splash__brandmark sup {
+  font-size: 0.6em;
+  letter-spacing: 0;
+  vertical-align: super;
+}
+
 .splash__actions {
   display: flex;
   flex-direction: row;

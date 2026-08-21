@@ -24,6 +24,8 @@
 :root {
   --color-bg: #000000;
   --color-fg: #ffffff;
+  /* Único acento de color permitido: detalle de marca (nombre bajo el logo) */
+  --color-accent: #d4ff00;
 
   --font-btn: 'Stencilia-A', 'Archivo Black', 'Arial Narrow', Arial, sans-serif;
   --font-hero: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;
