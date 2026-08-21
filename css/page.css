@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Great Juni — Pantallas placeholder (SHOP / CONTACT)
+   Misma dirección de arte que la splash: pantalla completa, sin scroll,
+   composición centrada.
+   ========================================================================== */
+
+.page {
+  position: relative;
+  z-index: 1;
+  height: 100svh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vh, 3rem);
+  padding: 6vh 6vw;
+  text-align: center;
+}
+
+.page__eyebrow {
+  margin: 0;
+  font-family: var(--font-btn);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.page__title {
+  margin: 0;
+  font-family: var(--font-hero);
+  font-weight: 800;
+  font-size: clamp(3rem, 12vw, 7rem);
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+.page__note {
+  margin: 0;
+  max-width: 32ch;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.page__back {
+  margin-top: clamp(1rem, 3vh, 2rem);
+}

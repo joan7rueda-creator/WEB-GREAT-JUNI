@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Great Juni — Landing / Splash screen
+   Pantalla única a pantalla completa, sin scroll. Monograma centrado y
+   dos acciones (SHOP / CONTACT) debajo.
+   ========================================================================== */
+
+.splash {
+  position: relative;
+  z-index: 1;
+  height: 100svh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6vh 6vw;
+}
+
+.splash__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 6vh, 4rem);
+  will-change: transform;
+}
+
+.monogram {
+  margin: 0;
+  font-family: var(--font-hero);
+  font-weight: 800;
+  font-size: clamp(5.5rem, 24vw, 15rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--color-fg);
+  user-select: none;
+}
+
+.splash__actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+@media (max-width: 380px) {
+  .splash__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .splash__actions .pill-btn {
+    width: 100%;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .splash__stage {
+    gap: clamp(1rem, 4vh, 2rem);
+  }
+
+  .monogram {
+    font-size: clamp(3.5rem, 14vh, 8rem);
+  }
+}
