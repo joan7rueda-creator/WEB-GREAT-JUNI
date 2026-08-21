@@ -32,8 +32,8 @@
    blanco por filtro CSS para leerse sobre el fondo negro de la splash. */
 .monogram-logo {
   display: block;
-  width: clamp(15rem, 46vw, 38rem);
-  max-width: 80vw;
+  width: clamp(10rem, 30vw, 24rem);
+  max-width: 65vw;
   height: auto;
   object-fit: contain;
   filter: invert(1);
@@ -67,6 +67,6 @@
   }
 
   .monogram-logo {
-    width: clamp(9rem, 34vh, 20rem);
+    width: clamp(6rem, 22vh, 13rem);
   }
 }
