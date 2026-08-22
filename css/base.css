@@ -4,32 +4,20 @@
    componente de botón "pill" y utilidades compartidas entre pantallas.
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   Stencilia-A (opcional)
-   Coloca los archivos de la fuente en assets/fonts/ y descomenta este bloque
-   para activarla en los botones. Si no está activa, se usa el fallback
-   definido en --font-btn sin ningún cambio adicional.
---------------------------------------------------------------------------- */
-/*
-@font-face {
-  font-family: 'Stencilia-A';
-  src: url('../assets/fonts/StenciliaA-Regular.woff2') format('woff2'),
-       url('../assets/fonts/StenciliaA-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-*/
-
 :root {
   --color-bg: #000000;
   --color-fg: #ffffff;
   /* Único acento de color permitido: detalle de marca (nombre bajo el logo) */
   --color-accent: #d4ff00;
 
-  --font-btn: 'Stencilia-A', 'Archivo Black', 'Arial Narrow', Arial, sans-serif;
-  --font-hero: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Pila monospace de sistema (sin webfonts): da el aire técnico/terminal
+     pedido usando únicamente lo ya instalado en cada SO. "ui-monospace"
+     resuelve a la mono nativa (SF Mono en macOS/iOS, etc.) donde el
+     navegador la soporta. */
+  --font-tech: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Segoe UI Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+  --font-btn: var(--font-tech);
+  --font-hero: var(--font-tech);
+  --font-body: var(--font-tech);
 
   --transition-fade: 380ms;
   --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
@@ -131,6 +119,41 @@ a {
   z-index: 0;
   pointer-events: none;
   background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0) 45%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* --------------------------------------------------------------------------
+   Marco técnico: líneas horizontales y verticales finas, tipo plano/
+   esquema técnico, enmarcando la pantalla. Puramente decorativo.
+--------------------------------------------------------------------------- */
+.tech-frame {
+  position: fixed;
+  inset: clamp(0.9rem, 3vh, 1.75rem) clamp(1rem, 3vw, 2rem);
+  z-index: 1;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.tech-frame::before,
+.tech-frame::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Línea horizontal adicional, a la altura del tercio superior */
+.tech-frame::before {
+  left: 0;
+  right: 0;
+  top: 22%;
+  height: 1px;
+}
+
+/* Línea vertical adicional, en el tercio derecho */
+.tech-frame::after {
+  top: 0;
+  bottom: 0;
+  right: 22%;
+  width: 1px;
 }
 
 /* --------------------------------------------------------------------------
