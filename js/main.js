@@ -11,7 +11,7 @@
 
   function initParallax() {
     var stage = document.querySelector('[data-parallax-stage]');
-    var grain = document.querySelector('[data-parallax-grain]');
+    var grainLayers = document.querySelectorAll('[data-parallax-grain]');
 
     if (!stage || reduceMotionQuery.matches) {
       return;
@@ -44,10 +44,11 @@
       stage.style.transform =
         'translate3d(' + (currentX * STAGE_RANGE).toFixed(2) + 'px, ' + (currentY * STAGE_RANGE).toFixed(2) + 'px, 0)';
 
-      if (grain) {
-        grain.style.transform =
-          'translate3d(' + (-currentX * GRAIN_RANGE).toFixed(2) + 'px, ' + (-currentY * GRAIN_RANGE).toFixed(2) + 'px, 0)';
-      }
+      var grainTransform =
+        'translate3d(' + (-currentX * GRAIN_RANGE).toFixed(2) + 'px, ' + (-currentY * GRAIN_RANGE).toFixed(2) + 'px, 0)';
+      grainLayers.forEach(function (layer) {
+        layer.style.transform = grainTransform;
+      });
 
       frameRequested = false;
       requestAnimationFrame(loop);

@@ -23,20 +23,47 @@
   will-change: transform;
 }
 
+/* Foto de campaña real (Great Juni), tratada en blanco y negro con grano,
+   motion blur direccional sobre las figuras y viñeteado — ver
+   assets/img/campaign_bg.jpg. Sustituye el negro plano como fondo de la
+   splash; el resto de capas de grano/viñeta y el scrim se apilan encima. */
+.splash-backdrop {
+  position: fixed;
+  inset: -24px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("../assets/img/campaign_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center 40%;
+  background-size: cover;
+  will-change: transform;
+}
+
+/* Velo oscuro semitransparente para garantizar el contraste del logo, el
+   nombre de marca y los botones sobre la foto de fondo. */
+.splash-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.52);
+}
+
 .monogram-logo-wrap {
   margin: 0;
   line-height: 0;
 }
 
 /* Isotipo real de la marca: PNG en negro sobre transparente, invertido a
-   blanco por filtro CSS para leerse sobre el fondo negro de la splash. */
+   blanco por filtro CSS para leerse sobre el fondo de la splash. El
+   drop-shadow refuerza el contraste ahora que el fondo es una foto. */
 .monogram-logo {
   display: block;
   width: clamp(10rem, 30vw, 24rem);
   max-width: 65vw;
   height: auto;
   object-fit: contain;
-  filter: invert(1);
+  filter: invert(1) drop-shadow(0 4px 22px rgba(0, 0, 0, 0.6));
   user-select: none;
   pointer-events: none;
 }
@@ -51,6 +78,7 @@
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--color-accent);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
   user-select: none;
 }
 
@@ -67,6 +95,12 @@
   align-items: center;
   justify-content: center;
   gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+/* Sombra sutil solo en los botones de la splash (no en el resto de pantallas,
+   que siguen sobre negro plano) para que el trazo se lea bien sobre la foto. */
+.splash__actions .pill-btn {
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 380px) {
