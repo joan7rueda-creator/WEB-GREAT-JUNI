@@ -79,28 +79,14 @@
   pointer-events: none;
 }
 
-.splash__actions {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(1rem, 3vw, 1.75rem);
-}
-
-/* Sombra sutil solo en los botones de la splash (no en el resto de pantallas,
-   que siguen sobre negro plano) para que el trazo se lea bien sobre la foto. */
-.splash__actions .pill-btn {
+/* CTA único del hero (sustituye a los antiguos SHOP + CONTACT). Sombra sutil
+   para que el trazo se lea bien sobre la foto de fondo. */
+.splash__cta {
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 380px) {
-  .splash__actions {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .splash__actions .pill-btn {
+  .splash__cta {
     width: 100%;
   }
 }
@@ -112,5 +98,157 @@
 
   .topbar__logo {
     width: clamp(2.25rem, 12vh, 3.5rem);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Líneas decorativas dispersas (sustituyen al patrón uniforme anterior):
+   longitud, grosor, ángulo y posición variados a propósito, para que lean
+   como un detalle compuesto a mano y no como un patrón repetido. Cantidad
+   moderada (7), todas fuera de la zona central de lectura (logo/CTA).
+--------------------------------------------------------------------------- */
+.deco-lines {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.deco-lines span {
+  position: absolute;
+  display: block;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.deco-lines span:nth-child(1) {
+  top: 16%;
+  left: 9%;
+  width: 11vw;
+  height: 1px;
+  transform: rotate(-5deg);
+  opacity: 0.8;
+}
+
+.deco-lines span:nth-child(2) {
+  top: 27%;
+  right: 14%;
+  width: 6vw;
+  height: 2px;
+  transform: rotate(9deg);
+  opacity: 0.55;
+}
+
+.deco-lines span:nth-child(3) {
+  top: 47%;
+  left: 5.5%;
+  width: 1px;
+  height: 12vh;
+  transform: rotate(3deg);
+  opacity: 0.65;
+}
+
+.deco-lines span:nth-child(4) {
+  bottom: 19%;
+  right: 7%;
+  width: 1px;
+  height: 17vh;
+  transform: rotate(-4deg);
+  opacity: 0.5;
+}
+
+.deco-lines span:nth-child(5) {
+  bottom: 11%;
+  left: 24%;
+  width: 15vw;
+  height: 1px;
+  transform: rotate(2deg);
+  opacity: 0.4;
+}
+
+.deco-lines span:nth-child(6) {
+  top: 61%;
+  right: 27%;
+  width: 7vw;
+  height: 1px;
+  transform: rotate(-11deg);
+  opacity: 0.35;
+}
+
+.deco-lines span:nth-child(7) {
+  top: 8%;
+  right: 32%;
+  width: 1px;
+  height: 7vh;
+  transform: rotate(7deg);
+  opacity: 0.45;
+}
+
+/* --------------------------------------------------------------------------
+   Micro-textos tipo tag/etiqueta de streetwear, dispersos entre las líneas.
+   Blanco/gris muy sutil, trazo fino: detalle de fondo, nunca protagonista.
+--------------------------------------------------------------------------- */
+.deco-tags {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  font-family: var(--font-tech);
+  font-weight: 300;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
+.deco-tags span {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.deco-tags span:nth-child(1) {
+  top: 14.5%;
+  left: 21%;
+  transform: rotate(-5deg);
+}
+
+.deco-tags span:nth-child(2) {
+  top: 25%;
+  right: 20%;
+  font-size: 0.8rem;
+  transform: rotate(9deg);
+}
+
+.deco-tags span:nth-child(3) {
+  bottom: 20%;
+  right: 9%;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.deco-tags span:nth-child(4) {
+  bottom: 12%;
+  left: 8%;
+  transform: rotate(2deg);
+}
+
+.deco-tags span:nth-child(5) {
+  top: 62%;
+  right: 30%;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.28);
+  transform: rotate(-11deg);
+}
+
+@media (max-width: 640px) {
+  /* En móvil hay menos espacio negativo alrededor del stage central:
+     reducir a un par de líneas/tags para no saturar la composición. */
+  .deco-lines span:nth-child(2),
+  .deco-lines span:nth-child(5),
+  .deco-lines span:nth-child(6),
+  .deco-lines span:nth-child(7),
+  .deco-tags span:nth-child(2),
+  .deco-tags span:nth-child(4),
+  .deco-tags span:nth-child(5) {
+    display: none;
   }
 }

@@ -133,29 +133,6 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.tech-frame::before,
-.tech-frame::after {
-  content: '';
-  position: absolute;
-  background: rgba(255, 255, 255, 0.22);
-}
-
-/* Línea horizontal adicional, a la altura del tercio superior */
-.tech-frame::before {
-  left: 0;
-  right: 0;
-  top: 22%;
-  height: 1px;
-}
-
-/* Línea vertical adicional, en el tercio derecho */
-.tech-frame::after {
-  top: 0;
-  bottom: 0;
-  right: 22%;
-  width: 1px;
-}
-
 /* --------------------------------------------------------------------------
    Botón pill (SHOP / CONTACT / navegación secundaria)
 --------------------------------------------------------------------------- */
