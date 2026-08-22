@@ -10,11 +10,11 @@
   /* Único acento de color permitido: detalle de marca (nombre bajo el logo) */
   --color-accent: #d4ff00;
 
-  /* Pila monospace de sistema (sin webfonts): da el aire técnico/terminal
-     pedido usando únicamente lo ya instalado en cada SO. "ui-monospace"
-     resuelve a la mono nativa (SF Mono en macOS/iOS, etc.) donde el
-     navegador la soporta. */
-  --font-tech: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Segoe UI Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+  /* Tipografía de referencia (portfolio Daleton Studio): grotesca geométrica
+     de x-height alto y remates redondeados. "Hanken Grotesk" (Google Fonts,
+     cargada en el <head>) es la más cercana; fallback a sans de sistema si
+     no llega a cargar. */
+  --font-tech: 'Hanken Grotesk', ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-btn: var(--font-tech);
   --font-hero: var(--font-tech);
   --font-body: var(--font-tech);
