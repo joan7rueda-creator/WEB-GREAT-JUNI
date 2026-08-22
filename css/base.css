@@ -133,15 +133,53 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   Marco técnico: líneas horizontales y verticales finas, tipo plano/
-   esquema técnico, enmarcando la pantalla. Puramente decorativo.
+   Trazos sueltos: líneas horizontales y verticales INDEPENDIENTES, cada una
+   con su propia longitud y posición. Deliberadamente no forman marco ni
+   figura cerrada — ninguna toca los bordes ni se encuentra con otra.
 --------------------------------------------------------------------------- */
-.tech-frame {
+.hero-rules {
   position: fixed;
-  inset: var(--grid-inset-y) var(--grid-inset-x);
+  inset: 0;
   z-index: 1;
   pointer-events: none;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.hero-rules span {
+  position: absolute;
+  display: block;
+  background: var(--rule-color);
+}
+
+/* Vertical corta, flanco izquierdo, altura media */
+.hero-rules span:nth-child(1) {
+  top: 34%;
+  left: 7.5%;
+  width: 1px;
+  height: 13vh;
+}
+
+/* Horizontal corta, cuadrante superior derecho */
+.hero-rules span:nth-child(2) {
+  top: 25%;
+  right: 11%;
+  width: 8vw;
+  height: 1px;
+}
+
+/* Vertical corta, flanco derecho, más abajo que la anterior */
+.hero-rules span:nth-child(3) {
+  top: 57%;
+  right: 21%;
+  width: 1px;
+  height: 16vh;
+}
+
+@media (max-width: 640px) {
+  /* Menos espacio libre alrededor del CTA: se deja solo un trazo. */
+  .hero-rules span:nth-child(2),
+  .hero-rules span:nth-child(3) {
+    display: none;
+  }
 }
 
 /* --------------------------------------------------------------------------
