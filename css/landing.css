@@ -50,15 +50,15 @@
 }
 
 /* Barra superior fija con el isotipo, a modo de header de marca (pequeño,
-   no como elemento hero). Estática: no participa del parallax del stage. */
+   no como elemento hero). Estática: no participa del parallax del stage.
+   Encajada en la esquina superior izquierda, alineada con el marco técnico
+   (.tech-frame usa los mismos insets — ver css/base.css). */
 .topbar {
   position: fixed;
-  inset: 0 0 auto 0;
+  top: clamp(0.9rem, 3vh, 1.75rem);
+  left: clamp(1rem, 3vw, 2rem);
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(1.5rem, 4vh, 2.25rem) 6vw 0;
+  padding: clamp(0.75rem, 2vh, 1.1rem) clamp(0.85rem, 2vw, 1.25rem) 0 0;
 }
 
 .topbar__logo-wrap {
@@ -77,26 +77,6 @@
   filter: invert(1) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.6));
   user-select: none;
   pointer-events: none;
-}
-
-/* Detalle discreto de marca bajo el logo: pequeño, en el acento de color
-   único permitido (amarillo neón), sin competir con el logo ni los botones. */
-.splash__brandmark {
-  margin: 0;
-  font-family: var(--font-btn);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
-  user-select: none;
-}
-
-.splash__brandmark sup {
-  font-size: 0.6em;
-  letter-spacing: 0;
-  vertical-align: super;
 }
 
 .splash__actions {
@@ -128,10 +108,6 @@
 @media (max-height: 480px) and (orientation: landscape) {
   .splash__stage {
     gap: clamp(1rem, 4vh, 2rem);
-  }
-
-  .topbar {
-    padding-top: clamp(0.75rem, 3vh, 1.25rem);
   }
 
   .topbar__logo {
