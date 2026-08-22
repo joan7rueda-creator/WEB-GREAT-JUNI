@@ -43,15 +43,17 @@ Y abrir `http://localhost:8000` en el navegador.
 
 ## Detalles de implementación
 
-- **Fondo de la splash**: foto de campaña real de Great Juni, tratada en blanco y negro (grano, motion blur direccional sobre las figuras, viñeta — ver `assets/img/campaign_bg.jpg`), con un velo oscuro (`.splash-scrim`) encima para garantizar contraste. Las pantallas Shop/Contact usan negro plano con la misma textura de grano (`.grain` + `.grain-blotch`) y viñeta.
-- **Logo**: isotipo real de la marca (`assets/img/logo_great_juni.png`, negro sobre transparente), invertido a blanco por CSS (`filter: invert(1)`). Vive en una barra superior fija (`.topbar`), pequeño, a modo de firma de marca — no es el elemento hero.
-- **"Great Juni®" y botones (SHOP / CONTACT)**: centrados en pantalla. Los botones son pill/rounded-full, borde de 1px, fondo transparente, texto en mayúsculas con letter-spacing amplio; en hover el fondo se rellena de blanco y el texto pasa a negro. Foco visible por teclado vía `:focus-visible`.
-- **Tipografía**: pila monospace de sistema (`--font-tech` en `css/base.css`: `ui-monospace`, SF Mono, Cascadia Mono, Segoe UI Mono, Consolas, Liberation Mono, Menlo…), sin webfonts externas, para un aire técnico/terminal consistente en toda la web (botones, textos, títulos).
-- **Marco técnico**: líneas finas horizontales y verticales (`.tech-frame` en `css/base.css`) enmarcando cada pantalla, puramente decorativas, reforzando el aire técnico/blueprint.
-- **Parallax**: desplazamiento sutil (unos pocos píxeles) del contenido central y de los fondos (grano/foto, en dirección opuesta) según la posición del cursor, suavizado con interpolación por frame. El logo de la topbar no se mueve (es un elemento de navegación fijo). Se desactiva por completo si el usuario tiene activado `prefers-reduced-motion: reduce`.
-- **Transición entre pantallas**: fade suave (fade-out → navegación → fade-in) al pulsar SHOP, CONTACT o "Volver", gestionado en `js/main.js` sin librerías externas.
-- **Responsive**: tamaños con `clamp()` y unidades relativas a viewport; en pantallas muy estrechas los botones pasan a apilarse en columna manteniendo la misma jerarquía visual.
-- **Sin dependencias externas**: no hay conexión a Shopify, APIs ni CDNs. Todo funciona 100% offline como frontend estático.
+- **Fondo de la splash**: foto de campaña real de Great Juni tratada como acabado editorial (`assets/img/campaign_bg.jpg`): monocromo, unsharp mask para que palmeras y tablones lean nítidos, motion blur horizontal **solo** sobre la banda de los cuerpos, grano fino modulado por luminancia y viñeta. Encima, un velo (`.splash-scrim`) con caída radial en el centro que asegura el contraste del CTA sin apagar los bordes. Las pantallas Shop/Contact usan negro plano con la misma textura de grano (`.grain` + `.grain-blotch`) y viñeta.
+- **Retícula**: logo, líneas, metadata y marco comparten los mismos insets (`--grid-inset-x` / `--grid-inset-y` en `css/base.css`), de modo que todo se alinea al mismo eje en cualquier viewport.
+- **Logo**: isotipo real de la marca (`assets/img/logo_great_juni.png`, negro sobre transparente), invertido a blanco por CSS (`filter: invert(1)`). Encaja en la esquina superior izquierda del marco, como primer elemento del rail superior — es firma de marca, no elemento hero.
+- **Líneas estructurales**: 1px, blanco a baja opacidad (`--rule-color`). Dos con función explícita, más el marco: el *rail superior* (marcador cuadrado → conector → bloque de metadata) que parte del logo, y la *regla del footer* que separa el hero de la fila de metadata inferior. Sin líneas decorativas sueltas.
+- **Metadata de marca**: bloques `.meta-tag` en monoespaciada de sistema (`--font-meta`), mayúsculas, tracking amplio y opacidad reducida, situados en los extremos de las líneas: `BIGSET7` al final del rail; `GJ · 7`, `BARCELONA` y `GETYOURS` en el footer (izquierda / centro / derecha). Deliberadamente por debajo del logo y del CTA en la jerarquía.
+- **CTA**: un único botón "Shop Now" centrado — pill de borde 1px, fondo transparente, mayúsculas con letter-spacing amplio; en hover el fondo se rellena de blanco y el texto pasa a negro. Foco visible por teclado vía `:focus-visible`.
+- **Tipografía**: Hanken Grotesk (Google Fonts) como familia principal (`--font-tech`), con fallback a sans de sistema; monoespaciada de sistema (`--font-meta`) reservada a la metadata técnica.
+- **Parallax**: desplazamiento sutil (unos pocos píxeles) del contenido central y de los fondos (grano/foto, en dirección opuesta) según la posición del cursor, suavizado con interpolación por frame. Rail, marco y footer no se mueven: son la retícula fija. Se desactiva por completo si el usuario tiene activado `prefers-reduced-motion: reduce`.
+- **Transición entre pantallas**: fade suave (fade-out → navegación → fade-in) al pulsar el CTA o "Volver", gestionado en `js/main.js` sin librerías externas.
+- **Responsive**: tamaños con `clamp()` y unidades relativas a viewport; en pantallas estrechas la fila de metadata se reduce a sus dos extremos y el CTA pasa a ancho completo.
+- **Dependencias externas**: solo la webfont de Google Fonts. No hay conexión a Shopify ni a ninguna API; el resto funciona como frontend estático.
 
 ## Próximas fases (fuera de alcance de esta entrega)
 

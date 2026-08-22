@@ -18,6 +18,15 @@
   --font-btn: var(--font-tech);
   --font-hero: var(--font-tech);
   --font-body: var(--font-tech);
+  /* Monoespaciada de sistema, reservada a la metadata técnica del hero
+     (líneas de referencia tipo ficha). Sin webfont adicional. */
+  --font-meta: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Segoe UI Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* Retícula del hero: mismos insets que el marco técnico, para que logo,
+     líneas, metadata y footer se alineen todos al mismo eje. */
+  --grid-inset-x: clamp(1rem, 3vw, 2rem);
+  --grid-inset-y: clamp(0.9rem, 3vh, 1.75rem);
+  --rule-color: rgba(255, 255, 255, 0.28);
 
   --transition-fade: 380ms;
   --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
@@ -86,14 +95,16 @@ a {
   inset: -24px;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.34;
   /* "overlay"/"soft-light" no pueden aclarar sobre un fondo #000 puro
      (matemáticamente no producen ningún efecto ahí): con "screen" el
-     grano sí queda visible sin introducir ningún tono ni romper el negro. */
+     grano sí queda visible sin introducir ningún tono ni romper el negro.
+     Frecuencia alta y alfa baja = grano fino fotográfico, no ruido grueso
+     (la foto de campaña ya lleva su propio grano revelado en el asset). */
   mix-blend-mode: screen;
   background-repeat: repeat;
-  background-size: 220px 220px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   will-change: transform;
 }
 
@@ -127,10 +138,10 @@ a {
 --------------------------------------------------------------------------- */
 .tech-frame {
   position: fixed;
-  inset: clamp(0.9rem, 3vh, 1.75rem) clamp(1rem, 3vw, 2rem);
+  inset: var(--grid-inset-y) var(--grid-inset-x);
   z-index: 1;
   pointer-events: none;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* --------------------------------------------------------------------------

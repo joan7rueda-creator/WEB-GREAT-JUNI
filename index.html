@@ -20,24 +20,6 @@
   <div class="splash-scrim" aria-hidden="true"></div>
   <div class="tech-frame" aria-hidden="true"></div>
 
-  <div class="deco-lines" aria-hidden="true">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <div class="deco-tags" aria-hidden="true">
-    <span>BigSet7</span>
-    <span>GJ</span>
-    <span>7</span>
-    <span>GetYours</span>
-    <span>GJ</span>
-  </div>
-
   <header class="topbar">
     <h1 class="topbar__logo-wrap">
       <img
@@ -48,7 +30,23 @@
         height="763"
       />
     </h1>
+
+    <!-- Conector: marcador → línea → bloque de metadata. La línea nace del
+         borde del logo y muere en el texto, no es relleno decorativo. -->
+    <span class="rail__marker" aria-hidden="true"></span>
+    <span class="rail__line" aria-hidden="true"></span>
+    <span class="meta-tag" aria-hidden="true">BigSet7</span>
   </header>
+
+  <!-- Divisor entre el área del hero y la fila de metadata inferior. -->
+  <div class="hero-footer" aria-hidden="true">
+    <span class="hero-footer__rule"></span>
+    <div class="hero-footer__row">
+      <span class="meta-tag">GJ &middot; 7</span>
+      <span class="meta-tag">Barcelona</span>
+      <span class="meta-tag">GetYours</span>
+    </div>
+  </div>
 
   <main class="splash">
     <div class="splash__stage" data-parallax-stage>
